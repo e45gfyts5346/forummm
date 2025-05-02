@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Форум сообщества</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Форум сообщества</h1>
+        <div class="user-controls">
+          <div id="auth-buttons">
+            <button id="login-btn">Войти</button>
+            <button id="register-btn">Регистрация</button>
+          </div>
+          <div id="user-info" style="display: none">
+            <span id="username-display"></span>
+            <button id="profile-btn">Профиль</button>
+            <button id="logout-btn">Выйти</button>
+            <button id="notifications-btn">
+              Уведомления <span id="notification-count">0</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="moderation-panel" id="moderation-panel" style="display: none">
+        <h3>Панель модератора</h3>
+        <div id="moderation-queue">
+          <h4>Сообщения на модерацию</h4>
+          <ul id="moderation-list"></ul>
+        </div>
+      </div>
+
+      <div
+        class="notification-popup"
+        id="notification-popup"
+        style="display: none"
+      >
+        <h3>Уведомления</h3>
+        <ul id="notification-list"></ul>
+        <button id="clear-notifications">Очистить все</button>
+      </div>
+
+      <div class="profile-popup" id="profile-popup" style="display: none">
+        <h3>Профиль пользователя</h3>
+        <div id="profile-content"></div>
+        <button id="close-profile">Закрыть</button>
+      </div>
+
+      <main>
+        <div class="forum-controls">
+          <button id="create-topic-btn">Создать новую тему</button>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Поиск по форуму..."
+          />
+          <select id="filter-select">
+            <option value="all">Все темы</option>
+            <option value="my">Мои темы</option>
+            <option value="participated">Участвовал</option>
+          </select>
+        </div>
+
+        <div class="topics-list" id="topics-list">
+          <!-- Темы будут загружены здесь -->
+        </div>
+
+        <div class="topic-view" id="topic-view" style="display: none">
+          <div class="topic-header">
+            <h2 id="topic-title"></h2>
+            <div class="topic-actions" id="topic-actions"></div>
+          </div>
+          <div id="posts-container"></div>
+          <div class="reply-form">
+            <textarea
+              id="reply-content"
+              placeholder="Ваше сообщение..."
+            ></textarea>
+            <button id="submit-reply">Отправить</button>
+          </div>
+        </div>
+
+        <div
+          class="create-topic-form"
+          id="create-topic-form"
+          style="display: none"
+        >
+          <h2>Создать новую тему</h2>
+          <input type="text" id="topic-name" placeholder="Название темы" />
+          <textarea
+            id="topic-first-post"
+            placeholder="Первое сообщение в теме..."
+          ></textarea>
+          <button id="submit-topic">Создать тему</button>
+          <button id="cancel-topic">Отмена</button>
+        </div>
+
+        <div class="edit-topic-form" id="edit-topic-form" style="display: none">
+          <h2>Редактировать тему</h2>
+          <input type="text" id="edit-topic-name" placeholder="Название темы" />
+          <div class="form-actions">
+            <button id="pin-topic-btn">Закрепить/открепить</button>
+            <button id="close-topic-btn">Закрыть/открыть</button>
+            <button id="save-topic">Сохранить</button>
+            <button id="cancel-edit">Отмена</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Модальные окна -->
+      <div class="modal" id="login-modal" style="display: none">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Вход</h2>
+          <input
+            type="text"
+            id="login-username"
+            placeholder="Имя пользователя"
+          />
+          <input type="password" id="login-password" placeholder="Пароль" />
+          <button id="submit-login">Войти</button>
+          <p id="login-error" class="error-message"></p>
+        </div>
+      </div>
+
+      <div class="modal" id="register-modal" style="display: none">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Регистрация</h2>
+          <input
+            type="text"
+            id="register-username"
+            placeholder="Имя пользователя"
+          />
+          <input type="password" id="register-password" placeholder="Пароль" />
+          <input
+            type="password"
+            id="register-confirm"
+            placeholder="Подтвердите пароль"
+          />
+          <button id="submit-register">Зарегистрироваться</button>
+          <p id="register-error" class="error-message"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
